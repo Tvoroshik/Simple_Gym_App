@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MASUTA — персональный фитнес-тренер Дмитрий</title>
+<meta name="description" content="Персональные тренировки, план питания и подготовка к соревнованиям. 8 лет опыта, 200+ клиентов.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;700;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles2.css">
+
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+    }
+  }
+</script>
+</head>
+<body>
+
+<!-- Задний слой: 3D-сцена -->
+<canvas id="sakura-layer"></canvas>
+<div id="bg-layer"></div>
+<div class="page-vignette"></div>
+<div class="content">
+  <!-- ===== Шапка ===== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <!-- Логотип -->
+      <a href="/index.html" class="logo">
+        <span class="logo-kanji">力</span>
+        <span class="logo-text">MA<span class="accent-span">SUTA</span></span>        
+      </a>
+      <!-- Бургер-меню (скрытый чекбокс) -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
+      <label for="nav-toggle" class="nav-burger" aria-label="Меню">
+        <span></span>
+      </label>
+      <!-- Навигация -->
+      <nav class="nav">
+        <a href="/index.html" class="nav-link">Главная</a>
+        <a href="/program_1.html" class="nav-link">Наставничество</a>
+        <a href="/program_2.html" class="nav-link active">Онлайн-занятия</a>
+        <a href="/anketa.html" class="nav-link">Анкета</a>
+        <button type="button" class="btn btn-header consult-open">Записаться</button>
+      </nav>
+    </div>
+  </header>
+
+
+
+    <!-- ===== Герой ===== -->
+    <section class="hero">
+      <div class="hero-bg"><img src="img/hero-bg.jpg" alt="" /></div>
+      <div class="hero-content">
+        <h1 class="hero-title">Онлайн занятие</h1>
+        <p class="hero-subtitle">
+          Только сильные стороны формата — без лишних слов.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== Как проходит работа (этапы) ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Как проходит наставничество</h2>
+          <p class="section-sub">
+            Чёткий план и понятные этапы — чтобы вы знали, чего ожидать на каждом шаге.
+          </p>
+        </div>
+
+<section class="section section-online-benefits">
+  <div class="container">
+
+    <div class="cards-grid">
+      <!-- Карточка 1 -->
+      <article class="card card-benefit">
+        <div class="card-icon">🎮</div>
+        <h3 class="card-title">Тренировки в любое время</h3>
+        <p class="card-desc">
+          Занимайтесь, когда удобно: утром, вечером, в обеденный перерыв. Нет привязки к залу и расписанию.
+        </p>
+      </article>
+
+      <!-- Карточка 2 -->
+      <article class="card card-benefit">
+        <div class="card-icon">🎥</div>
+        <h3 class="card-title">Разбор техники по видео</h3>
+        <p class="card-desc">
+          Присылаете короткие ролики — я детально разбираю каждое движение и показываю, как исправить ошибки.
+        </p>
+      </article>
+
+      <!-- Карточка 3 -->
+      <article class="card card-benefit">
+        <div class="card-icon">🧠</div>
+        <h3 class="card-title">Персональная адаптация</h3>
+        <p class="card-desc">
+          Программа подстраивается под ваш инвентарь: от полного зала до коврика и гантелей дома.
+        </p>
+      </article>
+
+      <!-- Карточка 4 -->
+      <article class="card card-benefit">
+        <div class="card-icon">💬</div>
+        <h3 class="card-title">Ежедневная поддержка</h3>
+        <p class="card-desc">
+          Отвечаю на вопросы каждый день — без ожидания «следующей встречи». Держу в фокусе и не даю сбиться.
+        </p>
+      </article>
+
+      <!-- Карточка 5 -->
+      <article class="card card-benefit">
+        <div class="card-icon">📊</div>
+        <h3 class="card-title">Прозрачная динамика</h3>
+        <p class="card-desc">
+          Еженедельные отчёты, замеры и фотофиксация — вы всегда видите прогресс и понимаете, куда движетесь.
+        </p>
+      </article>
+
+      <!-- Карточка 6 -->
+      <article class="card card-benefit">
+        <div class="card-icon">🛡️</div>
+        <h3 class="card-title">Безопасность и контроль</h3>
+        <p class="card-desc">
+          Учитываю травмы и ограничения, корректирую нагрузку по самочувствию — прогресс без риска для здоровья.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+   <!-- ===== Кому подойдёт ===== -->
+  <section class="section section-cards">
+  <div class="container">
+     <div class="section-head">
+          <h2 class="section-title">Кому подойдет</h2>
+          <p class="section-sub">
+            В зависимости от вашего опыта и необходимости готов предоставить качественные услуги
+          </p>
+        </div>
+    <div class="cards-grid">
+      <!-- Карточка 1: Новички -->
+      <article class="card">
+        <div class="card-icon">💪</div>
+        <h3 class="card-title">Новички: старт без страха</h3>
+        <p class="card-desc">
+          Никогда не тренировались или делали долгий перерыв? Пройдём «обучение» вместе: освоим технику, подберём комфортную нагрузку и не дадим бросить на второй неделе.
+        </p>
+      </article>
+
+      <!-- Карточка 2: Целевики -->
+      <article class="card">
+        <div class="card-icon">🎯</div>
+        <h3 class="card-title">Целевики: чёткий маршрут</h3>
+        <p class="card-desc">
+          Есть конкретная цель — похудение, набор, рельеф, подготовка к соревнованиям? Дам пошаговый план, контрольные точки и регулярный контроль прогресса.
+        </p>
+      </article>
+
+      <!-- Карточка 3: Без травм -->
+      <article class="card">
+        <div class="card-icon">🧘</div>
+        <h3 class="card-title">Без травм: безопасная адаптация</h3>
+        <p class="card-desc">
+          Есть ограничения по здоровью, старые травмы или страх навредить себе? Программа будет адаптирована под ваши особенности и построена по принципу «не навреди».
+        </p>
+      </article>
+
+      <!-- Карточка 4: Дисциплина -->
+      <article class="card">
+        <div class="card-icon">📅</div>
+        <h3 class="card-title">Дисциплина: система вместо мотивации</h3>
+        <p class="card-desc">
+          Сложно держать режим и мотивацию? Помогу выстроить систему привычек, чтобы прогресс шёл стабильно даже в дни, когда «не хочется».
+        </p>
+      </article>
+
+      <!-- Карточка 5: Восстановление после перерыва -->
+      <article class="card">
+        <div class="card-icon">🔄</div>
+        <h3 class="card-title">После перерыва: мягкий возврат</h3>
+        <p class="card-desc">
+          Делали паузу из‑за болезни, отпуска или выгорания? Вернём форму без резкого стресса для организма — с учётом текущего состояния и постепенным наращиванием нагрузки.
+        </p>
+      </article>
+
+      <!-- Карточка 6: Осознанный фитнес -->
+      <article class="card">
+        <div class="card-icon">💡</div>
+        <h3 class="card-title">Осознанный фитнес: понимание процесса</h3>
+        <p class="card-desc">
+          Хотите не просто «делать упражнения», а понимать, как работает тело, как растут мышцы и почему важно восстановление? Дам базу знаний, чтобы вы могли тренироваться грамотно и самостоятельно.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+ 
+    <!-- ===== Почему я (доверие) ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Почему я</h2>
+          <p class="section-sub">
+            8 лет опыта, 200+ клиентов, призовые места на соревнованиях. Работаю только с проверенными методиками.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== Результаты (примеры) ===== -->
+    <section class="section section-dark">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Результаты клиентов</h2>
+          <p class="section-sub">
+            Реальные истории и цифры — без ретуши и фотошопа.
+          </p>
+        </div>
+
+        <div class="results-grid">
+          <div class="result-item">
+            <div class="result-num">−12 кг</div>
+            <div class="result-desc">
+              За 3 месяца: похудение без срывов, восстановление после травмы колена.
+            </div>
+          </div>
+          <div class="result-item">
+            <div class="result-num">+8 кг мышц</div>
+            <div class="result-desc">
+              За 4 месяца: набор сухой массы, улучшение силовых показателей.
+            </div>
+          </div>
+          <div class="result-item">
+            <div class="result-num">100 кг присед</div>
+            <div class="result-desc">
+              За 2 месяца: освоение техники, рост рабочих весов, уверенность в зале.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Форма заявки ===== -->
+
+<section class="section" id="ready-to-start">
+  <div class="container">
+    <div class="cta-card">
+      <div class="cta-card-icon">
+        <span class="pixel-icon">📋</span>
+      </div>
+      <div class="cta-card-content">
+        <h3 class="cta-card-title">Готовы начать?</h3>
+        <p class="cta-card-desc">Заполните короткую анкету — я свяжусь с вами в течение 24 часов и предложу подходящий формат работы.</p>
+      </div>
+      <a href="/anketa.html" class="btn-cta-link">
+        <span class="btn-icon">📝</span>
+        Заполнить анкету
+      </a>
+    </div>
+  </div>
+</section>
+
+
+ <div class="footer-zone"></div>
+    <footer>© 2026 Саяхов по заказу: MASUTA · Персональный фитнес-тренер Дмитрий</footer>
+
+  </div>
+</div>
+  <script>
+    // Загрузка header/footer (если нужно)
+    fetch('common.html').then(r => r.text()).then(t => {
+      const parts = t.split('<footer>');
+      document.getElementById('header').innerHTML = parts;
+      document.getElementById('footer').innerHTML = '<footer>' + parts;
+
+      const links = document.querySelectorAll('.nav-link');
+      const current = window.location.pathname.split('/').pop();
+      links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === current || (l.getAttribute('href') === '/' && current === '')));
+    });
+  </script>
+
+  <script type="module" src="scripts/main.js"></script>
+  <script type="module" src="scripts/bg_flowers.js"></script>
+  <script type="module" src="scripts/fromtoscript.js"></script>
+  <script type="module" src="scripts/program.js"></script>
+
+   <!-- ===== МОДАЛЬНОЕ ОКНО: ФОРМА ЗАЯВКИ ===== -->
+<div class="consult-modal" id="consult-modal" aria-hidden="true">
+  <div class="consult-backdrop" data-close></div>
+
+  <div class="consult-dialog">
+    <button class="consult-close" data-close aria-label="Закрыть">✕</button>
+
+    <!-- Состояние 1: Форма -->
+    <div class="consult-step" id="step-form">
+      <h3 class="consult-title">Запишись на бесплатную консультацию</h3>
+      <p class="consult-desc">
+        Обсудим цель, замерим стартовые показатели и наметим план. Без обязательств.
+      </p>
+
+      <form id="consult-form" novalidate>
+        <input type="text" name="name" placeholder="Ваше имя" required autocomplete="name">
+        <input type="text" name="contact" placeholder="Телефон или Telegram" required autocomplete="tel">
+        
+        <button type="submit" class="btn-primary">Отправить заявку</button>
+      </form>
+
+      <div class="consult-links">
+        <a href="https://t.me/..." target="_blank" class="btn-secondary">Telegram</a>
+        <a href="https://wa.me/..." target="_blank" class="btn-secondary">WhatsApp</a>
+        <a href="mailto:..." class="btn-secondary">Email</a>
+      </div>
+
+      <p class="consult-legal">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
+    </div>
+
+    <!-- Состояние 2: Экран успеха -->
+    <div class="consult-step" id="step-success" style="display: none;">
+      <div class="consult-icon">✅</div>
+      <h3 class="consult-title">Заявка принята!</h3>
+      <p class="consult-desc">
+        Мы получили ваши данные. Чтобы закрепить результат и сразу начать работу над планом, рекомендуем перейти к подробной анкете.
+      </p>
+
+      <a href="/anketa.html" class="btn-primary">Перейти к анкете</a>
+      <button type="button" class="btn-secondary" id="close-success">Закрыть</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -181,3 +181,69 @@ function animate() {
 updateSize();
 
 renderer.setAnimationLoop(animate);
+
+
+(function() {
+  const modal = document.getElementById('consult-modal');
+  if (!modal) return;
+
+  const openBtns = document.querySelectorAll('.consult-open');
+  const closeBtns = document.querySelectorAll('[data-close]');
+  const form = document.getElementById('consult-form');
+  const stepForm = document.getElementById('step-form');
+  const stepSuccess = document.getElementById('step-success');
+  const closeSuccessBtn = document.getElementById('close-success');
+
+  // Открытие модалки
+  openBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      modal.classList.add('open');
+      document.body.classList.add('modal-open');
+    });
+  });
+
+  // Закрытие модалки
+  closeBtns.forEach(btn => {
+    btn.addEventListener('click', closeModal);
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.classList.remove('modal-open');
+    // Опционально: сбросить форму
+    if (form) form.reset();
+  }
+
+  // Обработка отправки формы
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // Здесь можно добавить реальную отправку данных (fetch/ajax)
+      // Например: fetch('/api/send-consult', { method: 'POST', body: new FormData(form) })...
+
+      // Имитация задержки и перехода к успеху
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Отправлено...';
+
+      setTimeout(() => {
+        stepForm.style.display = 'none';
+        stepSuccess.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }, 800);
+    });
+  }
+
+  // Закрытие экрана успеха
+  if (closeSuccessBtn) {
+    closeSuccessBtn.addEventListener('click', closeModal);
+  }
+})();

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MASUTA — персональный фитнес-тренер Дмитрий. Анкета</title>
+<meta name="description" content="Персональные тренировки, план питания и подготовка к соревнованиям. 8 лет опыта, 200+ клиентов.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles2.css">
+<link rel="stylesheet" href="styles.css">
+
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+    }
+  }
+</script>
+</head>
+<body>
+
+<!-- Задний слой: 3D-сцена -->
+<canvas id="sakura-layer"></canvas>
+<div id="bg-layer"></div>
+<div class="page-vignette"></div>
+<div class="content">
+  <!-- ===== Шапка ===== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <!-- Логотип -->
+      <a href="/index.html" class="logo">
+        <span class="logo-kanji">力</span>
+        <span class="logo-text">MA<span class="accent-span">SUTA</span></span>        
+      </a>
+      <!-- Бургер-меню (скрытый чекбокс) -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
+      <label for="nav-toggle" class="nav-burger" aria-label="Меню">
+        <span></span>
+      </label>
+      <!-- Навигация -->
+      <nav class="nav">
+        <a href="/index.html" class="nav-link">Главная</a>
+        <a href="/program_1.html" class="nav-link">Наставничество</a>
+        <a href="/program_2.html" class="nav-link">Онлайн-занятия</a>
+        <a href="/anketa.html" class="nav-link active">Анкета</a>
+        <button type="button" class="btn btn-header consult-open">Записаться</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section form-section">
+  <div class="container">
+    <div class="section-head">
+      <h1 class="section-title">Анкета клиента</h1>
+      <p class="section-sub">Заполните анкету — тренер изучит цели и ограничения, чтобы составить безопасную программу.</p>
+    </div>
+
+    <form class="anketa-form" action="/submit-client-application" method="POST" novalidate>
+      <!-- Блок 1: О вас (японский акцент) -->
+      <div class="anketa-block">
+        <div class="anketa-block-header">
+          <h3 class="anketa-block-title">О вас</h3>
+          <div class="block-line"></div>
+        </div>
+
+        <div class="anketa-grid-2x2">
+          <div class="form-group">
+            <label class="form-label" for="client-name">ФИО</label>
+            <input type="text" id="client-name" name="name" class="form-input" required placeholder="Иванов Иван Иванович">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="client-phone">Телефон</label>
+            <input type="tel" id="client-phone" name="phone" class="form-input" required placeholder="+7 (___) ___-__-__">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="client-age">Возраст</label>
+            <input type="number" id="client-age" name="age" class="form-input" required min="1" max="99" placeholder="28">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="client-gender">Пол</label>
+            <div class="select-wrap">
+              <select id="client-gender" name="gender" class="form-input form-select" required>
+                <option value="" disabled selected>Выберите пол</option>
+                <option value="male">Мужской</option>
+                <option value="female">Женский</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Блок 2: Цели и опыт -->
+      <div class="anketa-block">
+        <div class="anketa-block-header">
+          <h3 class="anketa-block-title">Цели и опыт</h3>
+          <div class="block-line"></div>
+        </div>
+
+        <div class="anketa-grid">
+          <div class="form-group">
+            <label class="form-label" for="client-goal">Основная цель</label>
+            <div class="select-wrap">
+              <select id="client-goal" name="goal" class="form-input form-select" required>
+                <option value="" disabled selected>Выберите цель</option>
+                <option value="lose_weight">Похудение / снижение жира</option>
+                <option value="build_muscle">Набор мышечной массы</option>
+                <option value="tone">Рельеф и тонус</option>
+                <option value="strength">Сила и функциональность</option>
+                <option value="rehab">Восстановление после травмы</option>
+                <option value="competition">Подготовка к соревнованиям</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="client-experience">Опыт тренировок</label>
+            <div class="select-wrap">
+              <select id="client-experience" name="experience" class="form-input form-select" required>
+                <option value="" disabled selected>Выберите уровень</option>
+                <option value="none">Никогда не тренировался</option>
+                <option value="beginner">До 3 месяцев</option>
+                <option value="intermediate">3–12 месяцев</option>
+                <option value="advanced">Более года</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="client-frequency">Тренировок в неделю</label>
+            <div class="select-wrap">
+              <select id="client-frequency" name="frequency" class="form-input form-select" required>
+                <option value="" disabled selected>Выберите</option>
+                <option value="1">1 раз</option>
+                <option value="2">2 раза</option>
+                <option value="3">3 раза</option>
+                <option value="4">4 раза</option>
+                <option value="5">5 и больше</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="client-location">Где занимаетесь</label>
+            <div class="select-wrap">
+              <select id="client-location" name="location" class="form-input form-select" required>
+                <option value="" disabled selected>Выберите</option>
+                <option value="gym">В зале</option>
+                <option value="home">Дома с инвентарём</option>
+                <option value="home_no_equip">Дома без инвентаря</option>
+                <option value="hybrid">Зал + дом</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group form-group--full">
+            <label class="form-label" for="client-priority">Что важно в первую очередь</label>
+            <textarea id="client-priority" name="priority" class="form-input form-textarea" required placeholder="Например: убрать живот, укрепить спину, поставить технику"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Блок 3: Здоровье и образ жизни -->
+      <div class="anketa-block">
+        <div class="anketa-block-header">
+          <h3 class="anketa-block-title">Здоровье и образ жизни</h3>
+          <div class="block-line"></div>
+        </div>
+
+        <div class="anketa-grid">
+          <div class="form-group form-group--full">
+            <label class="form-label" for="client-injuries">Травмы, операции, заболевания</label>
+            <textarea id="client-injuries" name="injuries" class="form-input form-textarea" placeholder="Например: протрузия L4-L5, операция на колене. Если нет — напишите «нет»"></textarea>
+          </div>
+          <div class="form-group form-group--full">
+            <label class="form-label" for="client-restrictions">Ограничения по нагрузке</label>
+            <textarea id="client-restrictions" name="restrictions" class="form-input form-textarea" placeholder="Например: нельзя осевую нагрузку, нельзя прыжки"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="client-sleep">Сон (часов в сутки)</label>
+            <input type="number" id="client-sleep" name="sleep" class="form-input" required min="1" max="12" step="0.5" placeholder="7">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="client-diet">Питание</label>
+            <div class="select-wrap">
+              <select id="client-diet" name="diet" class="form-input form-select">
+                <option value="" disabled selected>Выберите</option>
+                <option value="regular">Обычное</option>
+                <option value="vegan">Веганство</option>
+                <option value="vegetarian">Вегетарианство</option>
+                <option value="other">Другое (опишу ниже)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Согласие и кнопка -->
+      <label class="agree-check">
+        <input type="checkbox" name="agree" required>
+        <span class="agree-box" aria-hidden="true"></span>
+        <span>Даю согласие на обработку персональных данных</span>
+      </label>
+
+      <button type="submit" class="btn-primary form-submit" id="submit-btn">
+        <span class="submit-label">Отправить анкету</span>
+      </button>
+    </form>
+
+    <div class="form-success" id="form-success" hidden>
+      <span class="success-icon" aria-hidden="true">✓</span>
+      <h3 class="success-title">Спасибо!</h3>
+      <p class="success-text">Ваша анкета отправлена. Ответим в ближайшее время.</p>
+    </div>
+  </div>
+</section>
+
+  <div id="footer"></div>
+</div>
+
+  <script>
+    fetch('common.html').then(r => r.text()).then(t => {
+      document.getElementById('header').innerHTML = t.split('<footer>');
+      document.getElementById('footer').innerHTML = '<footer>' + t.split('<footer>');
+      const links = document.querySelectorAll('.nav-link');
+      const current = window.location.pathname.split('/').pop();
+      links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === current || (l.getAttribute('href') === '/' && current === '')));
+    });
+  </script>
+
+    <div class="footer-zone"></div>
+    <footer>© 2026 Саяхов по заказу: MASUTA · Персональный фитнес-тренер Дмитрий</footer>
+
+  </div>
+
+  <script type="module" src="scripts/main.js"></script>
+  <script type="module" src="scripts/bg_flowers.js"></script>
+  <script type="module" src="scripts/fromtoscript.js"></script>
+  <script type="module" src="scripts/anketaform.js"></script>
+  
+  <!-- ===== МОДАЛЬНОЕ ОКНО: ФОРМА ЗАЯВКИ ===== -->
+<div class="consult-modal" id="consult-modal" aria-hidden="true">
+  <div class="consult-backdrop" data-close></div>
+
+  <div class="consult-dialog">
+    <button class="consult-close" data-close aria-label="Закрыть">✕</button>
+
+    <!-- Состояние 1: Форма -->
+    <div class="consult-step" id="step-form">
+      <h3 class="consult-title">Запишись на бесплатную консультацию</h3>
+      <p class="consult-desc">
+        Обсудим цель, замерим стартовые показатели и наметим план. Без обязательств.
+      </p>
+
+      <form id="consult-form" novalidate>
+        <input type="text" name="name" placeholder="Ваше имя" required autocomplete="name">
+        <input type="text" name="contact" placeholder="Телефон или Telegram" required autocomplete="tel">
+        
+        <button type="submit" class="btn-primary">Отправить заявку</button>
+      </form>
+
+      <div class="consult-links">
+        <a href="https://t.me/..." target="_blank" class="btn-secondary">Telegram</a>
+        <a href="https://wa.me/..." target="_blank" class="btn-secondary">WhatsApp</a>
+        <a href="mailto:..." class="btn-secondary">Email</a>
+      </div>
+
+      <p class="consult-legal">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
+    </div>
+
+    <!-- Состояние 2: Экран успеха -->
+    <div class="consult-step" id="step-success" style="display: none;">
+      <div class="consult-icon">✅</div>
+      <h3 class="consult-title">Заявка принята!</h3>
+      <p class="consult-desc">
+        Мы получили ваши данные. Чтобы закрепить результат и сразу начать работу над планом, рекомендуем перейти к подробной анкете.
+      </p>
+
+      <a href="/anketa.html" class="btn-primary">Перейти к анкете</a>
+      <button type="button" class="btn-secondary" id="close-success">Закрыть</button>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

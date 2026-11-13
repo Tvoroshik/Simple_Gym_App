@@ -8,14 +8,14 @@
       author: 'Клиент, 31 год'
     },
     {
-      before: 'img/From.png',
-      after:  'img/To.png',
+      before: 'img/From2.png',
+      after:  'img/To2.png',
       quote:  '«Через полгода впервые увидел пресс. Программа и план питания делают всё».',
       author: 'Клиент, 27 лет'
     },
     {
-      before: 'img/From.png',
-      after:  'img/To.png',
+      before: 'img/From3.png',
+      after:  'img/To3.png',
       quote:  '«Готовили к первым соревнованиям по бодибилдингу. Разложили всё по полочкам».',
       author: 'Клиент, 24 года'
     }

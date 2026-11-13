@@ -31,7 +31,7 @@
   <header class="site-header">
     <div class="header-inner">
       <!-- Логотип -->
-      <a href="#home" class="logo">
+      <a href="/index.html" class="logo">
         <span class="logo-kanji">力</span>
         <span class="logo-text">MA<span class="accent-span">SUTA</span></span>        
       </a>
@@ -42,17 +42,15 @@
       </label>
       <!-- Навигация -->
       <nav class="nav">
-        <a href="#home" class="nav-link active">Главная</a>
-        <a href="#about" class="nav-link">Наставничество</a>
-        <a href="#program" class="nav-link">Онлайн-занятия</a>
-        <a href="#reviews" class="nav-link">Анкета</a>
-        <!-- Кнопка внутри меню для мобильных -->
-        <a href="#contacts" class="btn btn-nav">Записаться</a>
+        <a href="/index.html" class="nav-link active">Главная</a>
+        <a href="/program_1.html" class="nav-link">Наставничество</a>
+        <a href="/program_2.html" class="nav-link">Онлайн-занятия</a>
+        <a href="/anketa.html" class="nav-link">Анкета</a>
+        <button type="button" class="btn btn-header consult-open">Записаться</button>
       </nav>
-      <!-- Кнопка для десктопа -->
-      <a href="#contacts" class="btn btn-header">Записаться</a>
     </div>
   </header>
+
   <!-- ===== Hero ===== -->
   <section id="home" class="hero">
     <div class="hero-grid">
@@ -90,7 +88,6 @@
 
         <div class="about-content">
           <div class="about-badge">
-            <span class="badge-label">Инструктор тренажёрного зала</span>
           </div>
 
           <h2 class="section-title">Обо мне</h2>
@@ -222,10 +219,7 @@
   </ul>
 
   <!-- Выбрать: на страницу записи -->
-  <a href="zapis.html" class="btn program-btn">Выбрать</a>
-
-  <!-- Подробнее: настоящая ссылка на страницу тарифа, НЕ label -->
-  <a href="programs.html#nastavnichestvo" class="btn-more">Подробнее</a>
+  <a href="program_1.html" class="btn program-btn">Выбрать</a>
 
   <div class="program-tag">Для стабильного прогресса</div>
 </div>
@@ -247,9 +241,7 @@
     <li class="program-item is-checked">Подготовка к соревнованиям</li>
   </ul>
 
-  <a href="zapis.html" class="btn program-btn">Выбрать</a>
-
-  <a href="programs.html#online" class="btn-more">Подробнее</a>
+  <a href="program_2.html" class="btn program-btn">Выбрать</a>
 
   <div class="program-tag">Для опытных и готовых к самостоятельности</div>
 </div>
@@ -278,7 +270,7 @@
         <blockquote class="review-text">
           «Минус 9 кг за 3 месяца без жёстких диет. Впервые тренировки не превращаются в каторгу».
         </blockquote>
-        <cite class="review-author">Клиент, 31 год</cite>
+        <cite class="review-author">Хасанова Тимур, 31 год</cite>
       </div>
     </article>
 
@@ -286,16 +278,16 @@
     <article class="review-card">
       <button class="review-photo-btn" data-index="1" aria-label="Открыть сравнение до/после">
         <div class="review-photos">
-          <img src="img/From.png" alt="Результат: пресс через полгода" class="review-img">
+          <img src="img/From2.png" alt="Результат: пресс через полгода" class="review-img">
           <span class="photo-badge photo-badge--after">После</span>
           <span class="fake-handle" aria-hidden="true"></span>
         </div>
       </button>
       <div class="review-content">
         <blockquote class="review-text">
-          «Через полгода впервые увидел пресс. Программа и план питания делают всё».
+          «Спасибо Диме. Программа и план питания делают всё».
         </blockquote>
-        <cite class="review-author">Клиент, 27 лет</cite>
+        <cite class="review-author">Самойлова Вера, 22 лет</cite>
       </div>
     </article>
 
@@ -303,16 +295,16 @@
     <article class="review-card">
       <button class="review-photo-btn" data-index="2" aria-label="Открыть сравнение до/после">
         <div class="review-photos">
-          <img src="img/From.png" alt="Результат: подготовка к соревнованиям" class="review-img">
+          <img src="img/From3.png" alt="Результат: подготовка к соревнованиям" class="review-img">
           <span class="photo-badge photo-badge--after">После</span>
           <span class="fake-handle" aria-hidden="true"></span>
         </div>
       </button>
       <div class="review-content">
         <blockquote class="review-text">
-          «Готовили к первым соревнованиям по бодибилдингу. Разложили всё по полочкам».
+          «Работали онлайн - все было понятно, прозрачно и легко».
         </blockquote>
-        <cite class="review-author">Клиент, 24 года</cite>
+        <cite class="review-author">Самохин Виталий, 24 года</cite>
       </div>
     </article>
 
@@ -388,7 +380,50 @@
       return false;
     }
   </script>
-  
+ 
+  <!-- ===== МОДАЛЬНОЕ ОКНО: ФОРМА ЗАЯВКИ ===== -->
+<div class="consult-modal" id="consult-modal" aria-hidden="true">
+  <div class="consult-backdrop" data-close></div>
+
+  <div class="consult-dialog">
+    <button class="consult-close" data-close aria-label="Закрыть">✕</button>
+
+    <!-- Состояние 1: Форма -->
+    <div class="consult-step" id="step-form">
+      <h3 class="consult-title">Запишись на бесплатную консультацию</h3>
+      <p class="consult-desc">
+        Обсудим цель, замерим стартовые показатели и наметим план. Без обязательств.
+      </p>
+
+      <form id="consult-form" novalidate>
+        <input type="text" name="name" placeholder="Ваше имя" required autocomplete="name">
+        <input type="text" name="contact" placeholder="Телефон или Telegram" required autocomplete="tel">
+        
+        <button type="submit" class="btn-primary">Отправить заявку</button>
+      </form>
+
+      <div class="consult-links">
+        <a href="https://t.me/..." target="_blank" class="btn-secondary">Telegram</a>
+        <a href="https://wa.me/..." target="_blank" class="btn-secondary">WhatsApp</a>
+        <a href="mailto:..." class="btn-secondary">Email</a>
+      </div>
+
+      <p class="consult-legal">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
+    </div>
+
+    <!-- Состояние 2: Экран успеха -->
+    <div class="consult-step" id="step-success" style="display: none;">
+      <div class="consult-icon">✅</div>
+      <h3 class="consult-title">Заявка принята!</h3>
+      <p class="consult-desc">
+        Мы получили ваши данные. Чтобы закрепить результат и сразу начать работу над планом, рекомендуем перейти к подробной анкете.
+      </p>
+
+      <a href="/anketa.html" class="btn-primary">Перейти к анкете</a>
+      <button type="button" class="btn-secondary" id="close-success">Закрыть</button>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
