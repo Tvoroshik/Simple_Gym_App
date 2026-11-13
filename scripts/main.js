@@ -179,4 +179,5 @@ function animate() {
 }
 
 updateSize();
+
 renderer.setAnimationLoop(animate);

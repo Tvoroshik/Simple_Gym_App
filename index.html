@@ -22,93 +22,60 @@
 </head>
 <body>
 
-  <!-- Задний слой: 3D-сцена -->
-  <div id="bg-layer"></div>
-  <div class="page-vignette"></div>
-
-  <div class="content">
-
-    <!-- ===== Шапка ===== -->
-    <header class="site-header">
-      <a href="#home" class="logo">MA<span>SUTA</span></a>
-
+<!-- Задний слой: 3D-сцена -->
+<canvas id="sakura-layer"></canvas>
+<div id="bg-layer"></div>
+<div class="page-vignette"></div>
+<div class="content">
+  <!-- ===== Шапка ===== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <!-- Логотип -->
+      <a href="#home" class="logo">
+        <span class="logo-kanji">力</span>
+        <span class="logo-text">MA<span class="accent-span">SUTA</span></span>        
+      </a>
+      <!-- Бургер-меню (скрытый чекбокс) -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
+      <label for="nav-toggle" class="nav-burger" aria-label="Меню">
+        <span></span>
+      </label>
+      <!-- Навигация -->
       <nav class="nav">
         <a href="#home" class="nav-link active">Главная</a>
-        <a href="#about" class="nav-link">Обо мне</a>
-        <a href="#program" class="nav-link">Программы</a>
-        <a href="#reviews" class="nav-link">Отзывы</a>
-        <a href="#contacts" class="nav-link">Контакты</a>
+        <a href="#about" class="nav-link">Наставничество</a>
+        <a href="#program" class="nav-link">Онлайн-занятия</a>
+        <a href="#reviews" class="nav-link">Анкета</a>
+        <!-- Кнопка внутри меню для мобильных -->
+        <a href="#contacts" class="btn btn-nav">Записаться</a>
       </nav>
-
-      <a href="index2.html" class="btn btn-small">Записаться</a>
-    </header>
-
-    <!-- ===== Hero ===== -->
-    <section id="home" class="hero">
-      <div class="hero-grid">
-        <div class="hero-left">
-          <div class="hero-eyebrow">
-            <span class="eyebrow-dot"></span>
-            Персональный тренер · Уфа · онлайн и в зале
-          </div>
-
-          <h1 class="hero-title">
-            ТРЕНИРУЙСЯ<br>
-            <span class="hero-accent">ПО-НАСТОЯЩЕМУ</span>
-          </h1>
-
-          <p class="hero-sub">
-            Программа, питание и контроль прогресса каждую неделю.
-            Система, которая ведёт от первого замера до видимого результата.
-          </p>
-
-          <div class="hero-actions">
-            <a href="#contacts" class="btn">Записаться на пробное</a>
-            <a href="#program" class="btn btn-ghost">Программы и цены</a>
-          </div>
+      <!-- Кнопка для десктопа -->
+      <a href="#contacts" class="btn btn-header">Записаться</a>
+    </div>
+  </header>
+  <!-- ===== Hero ===== -->
+  <section id="home" class="hero">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="hero-eyebrow">
+          <span class="eyebrow-dot"></span>
+          Персональный тренер · Уфа · онлайн и в зале
         </div>
-
-        <div class="hero-photo">
-          <img src="img/background.png" alt="Дмитрий — персональный фитнес-тренер">
-          <div class="hero-photo-tag">
-            <b>200+</b>
-            <span>клиентов с результатом</span>
-          </div>
+        <h1 class="hero-title">
+          Сила В<br>
+          <span class="hero-accent">Дисциплине</span>
+        </h1>
+        <p class="hero-sub">
+          С моей помощью Вы станете лучшей версией себя
+        </p>
+        <div class="hero-actions">
+          <a href="#contacts" class="btn">Записаться на пробное</a>
+          <a href="#program" class="btn btn-ghost">Программы и цены</a>
         </div>
-      </div>
-
-      <div class="features">
-        <div class="feature">
-          <div class="feature-num">01</div>
-          <h3>Персональный подход</h3>
-          <p>Программа под вашу цель, подготовку и особенности организма.</p>
-        </div>
-        <div class="feature">
-          <div class="feature-num">02</div>
-          <h3>План питания</h3>
-          <p>Гибкий рацион под ваш образ жизни — без голодовок и срывов.</p>
-        </div>
-        <div class="feature">
-          <div class="feature-num">03</div>
-          <h3>Видимый результат</h3>
-          <p>Замеры каждую неделю, план корректируется по факту.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Бегущая строка ===== -->
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker-track">
-        <span>Силовые</span><i>✦</i><span>Жиросжигание</span><i>✦</i>
-        <span>Набор массы</span><i>✦</i><span>ОФП / СФП</span><i>✦</i>
-        <span>Коррекция фигуры</span><i>✦</i><span>Подготовка к соревнованиям</span><i>✦</i>
-        <span>Силовые</span><i>✦</i><span>Жиросжигание</span><i>✦</i>
-        <span>Набор массы</span><i>✦</i><span>ОФП / СФП</span><i>✦</i>
-        <span>Коррекция фигуры</span><i>✦</i><span>Подготовка к соревнованиям</span><i>✦</i>
       </div>
     </div>
-
-    <!-- ===== Обо мне ===== -->
+  </section>
+<!-- ===== Обо мне ===== -->
     <section id="about" class="section section-about">
       <div class="about-container">
 
@@ -117,14 +84,13 @@
           <img src="img/background.png" alt="Дмитрий — персональный фитнес-тренер" class="about-photo">
           <div class="about-photo-caption">
             <span class="caption-name">Дмитрий</span>
-            <span class="caption-role">персональный тренер · инструктор тренажёрного зала</span>
+            <span class="caption-role">персональный тренер</span>
           </div>
         </div>
 
         <div class="about-content">
           <div class="about-badge">
             <span class="badge-label">Инструктор тренажёрного зала</span>
-            <span class="badge-level">Категория «Премиум»</span>
           </div>
 
           <h2 class="section-title">Обо мне</h2>
@@ -176,129 +142,209 @@
       </div>
     </section>
 
-   <!-- ===== Абонементы ===== -->
+  <section id="feature" class="section-features">
+  <div class="features-head">
+  <h2 class="features-title">Мои принципы</h2>
+  <p class="features-sub">Четыре правила, на которых построена вся работа.</p>
+  <span class="features-brush" aria-hidden="true"></span>
+</div>
+
+<div class="features">
+  <div class="feature">
+    <div class="feature-num">01</div>
+    <div class="feature-body">
+      <h3>Безопасность</h3>
+      <p>Тренировки строятся с учётом состояния здоровья — приоритет на технику и отсутствие травм.</p>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="feature-num">02</div>
+    <div class="feature-body">
+      <h3>Индивидуальный подход</h3>
+      <p>Программа под вашу цель, уровень подготовки и особенности организма — без шаблонов.</p>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="feature-num">03</div>
+    <div class="feature-body">
+      <h3>Питание</h3>
+      <p>Гибкий рацион под ваш образ жизни — без голодовок, срывов и запретов.</p>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="feature-num">04</div>
+    <div class="feature-body">
+      <h3>Честность</h3>
+      <p>Никаких «чудо-таблеток» и нереалистичных обещаний — только проверенные методики.</p>
+    </div>
+  </div>
+</div>
+
+</section>
+
+  <!-- ===== Бегущая строка ===== -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Силовые</span><i>✦</i><span>Жиросжигание</span><i>✦</i>
+      <span>Набор массы</span><i>✦</i><span>ОФП / СФП</span><i>✦</i>
+      <span>Коррекция фигуры</span><i>✦</i><span>Подготовка к соревнованиям</span><i>✦</i>
+      <span>Силовые</span><i>✦</i><span>Жиросжигание</span><i>✦</i>
+      <span>Набор массы</span><i>✦</i><span>ОФП / СФП</span><i>✦</i>
+      <span>Коррекция фигуры</span><i>✦</i><span>Подготовка к соревнованиям</span><i>✦</i>
+    </div>
+  </div>
+
+  <!-- ===== Абонементы ===== -->
 <section id="program" class="section">
   <div class="section-head">
     <h2 class="section-title">Абонементы</h2>
-    <p class="section-sub">Выберите подходящий формат работы — наполнение растёт с тарифом.</p>
+    <p class="section-sub">Выберите подходящий формат работы</p>
   </div>
 
-  <div class="programs">
-    <!-- Тариф 1: Новичок -->
-    <div class="program-card">
-      <div class="program-header">
-        <span class="program-badge">Новичок</span>
-        <div class="program-price">1 000 ₽<span>/занятие</span></div>
+  <!-- Карточка 1: Наставничество -->
+<div class="program-card program-card--highlight">
+  <div class="program-header">
+    <span class="badge badge-glow">Наставничество</span>
+    <div class="program-price">1 500 ₽<span>/занятие</span></div>
+  </div>
+
+  <ul class="program-list">
+    <li class="program-item is-checked">Фитнес-тестирование</li>
+    <li class="program-item is-checked">Индивидуальный подход</li>
+    <li class="program-item is-checked">Программа тренировок</li>
+    <li class="program-item is-checked">Расчёт КБЖУ</li>
+    <li class="program-item is-checked">Программа питания</li>
+    <li class="program-item is-checked">Полная поддержка</li>
+    <li class="program-item is-checked">Подготовка к соревнованиям</li>
+  </ul>
+
+  <!-- Выбрать: на страницу записи -->
+  <a href="zapis.html" class="btn program-btn">Выбрать</a>
+
+  <!-- Подробнее: настоящая ссылка на страницу тарифа, НЕ label -->
+  <a href="programs.html#nastavnichestvo" class="btn-more">Подробнее</a>
+
+  <div class="program-tag">Для стабильного прогресса</div>
+</div>
+
+<!-- Карточка 2: Онлайн-ведение -->
+<div class="program-card">
+  <div class="program-header">
+    <span class="badge badge-outline">Онлайн-ведение</span>
+    <div class="program-price">1 000 ₽<span>/занятие</span></div>
+  </div>
+
+  <ul class="program-list">
+    <li class="program-item is-checked">Индивидуальный подход</li>
+    <li class="program-item is-checked">Подробное описание техник упражнений</li>
+    <li class="program-item is-checked">Программа тренировок</li>
+    <li class="program-item is-checked">Расчёт КБЖУ</li>
+    <li class="program-item is-checked">Программа питания</li>
+    <li class="program-item is-checked">Поддержка в чате</li>
+    <li class="program-item is-checked">Подготовка к соревнованиям</li>
+  </ul>
+
+  <a href="zapis.html" class="btn program-btn">Выбрать</a>
+
+  <a href="programs.html#online" class="btn-more">Подробнее</a>
+
+  <div class="program-tag">Для опытных и готовых к самостоятельности</div>
+</div>
+</section>
+
+ <section class="section reviews-section">
+<section class="section reviews-section">
+  <div class="section-head">
+    <h2 class="section-title">Результаты учеников</h2>
+    <p class="section-sub">Реальные истории и трансформации — без фильтров и фотошопа. Нажмите на фото, чтобы сравнить.</p>
+  </div>
+
+  <div class="reviews-grid">
+
+    <!-- Карточка 1 -->
+    <article class="review-card">
+      <button class="review-photo-btn" data-index="0" aria-label="Открыть сравнение до/после">
+        <div class="review-photos">
+          <img src="img/From.png" alt="Результат: минус 9 кг за 3 месяца" class="review-img">
+          <span class="photo-badge photo-badge--after">После</span>
+          <!-- Декоративный ползунок: просто линия и кружок, ничего не делает -->
+          <span class="fake-handle" aria-hidden="true"></span>
+        </div>
+      </button>
+      <div class="review-content">
+        <blockquote class="review-text">
+          «Минус 9 кг за 3 месяца без жёстких диет. Впервые тренировки не превращаются в каторгу».
+        </blockquote>
+        <cite class="review-author">Клиент, 31 год</cite>
       </div>
+    </article>
 
-      <ul class="program-list">
-        <li class="program-item checked">Фитнес-тестирование</li>
-        <li class="program-item checked">Программа тренировок</li>
-        <li class="program-item unchecked">Расчёт КБЖУ</li>
-        <li class="program-item unchecked">Программа питания</li>
-        <li class="program-item unchecked">Поддержка в чате</li>
-        <li class="program-item unchecked">Подготовка к соревнованиям</li>
-      </ul>
-
-      <a href="#contacts" class="btn program-btn">Выбрать</a>
-      <div class="tag">Для старта и первых результатов</div>
-    </div>
-
-    <!-- Тариф 2: Опытный -->
-    <div class="program-card program-card--accent">
-      <div class="program-header">
-        <span class="program-badge">Опытный</span>
-        <div class="program-price">1 500 ₽<span>/занятие</span></div>
+    <!-- Карточка 2 -->
+    <article class="review-card">
+      <button class="review-photo-btn" data-index="1" aria-label="Открыть сравнение до/после">
+        <div class="review-photos">
+          <img src="img/From.png" alt="Результат: пресс через полгода" class="review-img">
+          <span class="photo-badge photo-badge--after">После</span>
+          <span class="fake-handle" aria-hidden="true"></span>
+        </div>
+      </button>
+      <div class="review-content">
+        <blockquote class="review-text">
+          «Через полгода впервые увидел пресс. Программа и план питания делают всё».
+        </blockquote>
+        <cite class="review-author">Клиент, 27 лет</cite>
       </div>
+    </article>
 
-      <ul class="program-list">
-        <li class="program-item checked">Фитнес-тестирование</li>
-        <li class="program-item checked">Программа тренировок</li>
-        <li class="program-item checked">Расчёт КБЖУ</li>
-        <li class="program-item checked">Программа питания</li>
-        <li class="program-item unchecked">Поддержка в чате</li>
-        <li class="program-item unchecked">Подготовка к соревнованиям</li>
-      </ul>
-
-      <a href="#contacts" class="btn program-btn">Выбрать</a>
-      <div class="tag">Для стабильного прогресса</div>
-    </div>
-
-    <!-- Тариф 3: В тонусе -->
-    <div class="program-card">
-      <div class="program-header">
-        <span class="program-badge">В тонусе</span>
-        <div class="program-price">2 000 ₽<span>/занятие</span></div>
+    <!-- Карточка 3 -->
+    <article class="review-card">
+      <button class="review-photo-btn" data-index="2" aria-label="Открыть сравнение до/после">
+        <div class="review-photos">
+          <img src="img/From.png" alt="Результат: подготовка к соревнованиям" class="review-img">
+          <span class="photo-badge photo-badge--after">После</span>
+          <span class="fake-handle" aria-hidden="true"></span>
+        </div>
+      </button>
+      <div class="review-content">
+        <blockquote class="review-text">
+          «Готовили к первым соревнованиям по бодибилдингу. Разложили всё по полочкам».
+        </blockquote>
+        <cite class="review-author">Клиент, 24 года</cite>
       </div>
+    </article>
 
-      <ul class="program-list">
-        <li class="program-item checked">Фитнес-тестирование</li>
-        <li class="program-item checked">Программа тренировок</li>
-        <li class="program-item checked">Расчёт КБЖУ</li>
-        <li class="program-item checked">Программа питания</li>
-        <li class="program-item checked">Поддержка в чате</li>
-        <li class="program-item checked">Подготовка к соревнованиям</li>
-      </ul>
-
-      <a href="#contacts" class="btn program-btn">Выбрать</a>
-      <div class="tag">Для максимальных результатов</div>
-    </div>
   </div>
 </section>
 
-    <!-- ===== Как проходит работа ===== -->
-    <section id="process" class="section">
-      <div class="section-head">
-        <h2 class="section-title">Как проходит работа</h2>
-        <p class="section-sub">Прозрачный процесс от заявки до результата.</p>
-      </div>
+<!-- ===== Модальное окно со слайдером (одно на все карточки) ===== -->
+<div class="compare-modal" id="compare-modal" aria-hidden="true">
+  <div class="compare-backdrop" data-close></div>
 
-      <div class="process">
-        <div class="process-step">
-          <div class="step-num">01</div>
-          <h3>Заявка</h3>
-          <p>Пишете в мессенджер — обсуждаем цель и исходные данные.</p>
-        </div>
-        <div class="process-step">
-          <div class="step-num">02</div>
-          <h3>Диагностика</h3>
-          <p>Замеры, разбор образа жизни и тренировочного опыта.</p>
-        </div>
-        <div class="process-step">
-          <div class="step-num">03</div>
-          <h3>План</h3>
-          <p>Программа тренировок и питания под ваш график.</p>
-        </div>
-        <div class="process-step">
-          <div class="step-num">04</div>
-          <h3>Контроль</h3>
-          <p>Еженедельная проверка замеров и корректировка курса.</p>
-        </div>
-      </div>
-    </section>
+  <div class="compare-dialog" role="dialog" aria-modal="true" aria-label="Сравнение до и после">
+    <button class="compare-close" data-close aria-label="Закрыть">✕</button>
 
-    <!-- ===== Отзывы ===== -->
-    <section id="reviews" class="section">
-      <div class="section-head">
-        <h2 class="section-title">Отзывы</h2>
-        <p class="section-sub">Фрагменты реальных историй клиентов.</p>
-      </div>
+    <div class="compare-slider" id="compare-slider">
+      <img src="" alt="Фото до" class="compare-img compare-before" id="compare-before">
+      <img src="" alt="Фото после" class="compare-img compare-after" id="compare-after">
+      <span class="compare-line"></span>
+      <span class="compare-knob">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M9 6L4 12l5 6M15 6l5 6-5 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="compare-label compare-label--before">До</span>
+      <span class="compare-label compare-label--after">После</span>
+    </div>
 
-      <div class="reviews">
-        <figure class="review">
-          <blockquote>«Минус 9 кг за 3 месяца без жёстких диет. Впервые тренировки не превращаются в каторгу».</blockquote>
-          <figcaption>Аннечка, 31 год</figcaption>
-        </figure>
-        <figure class="review">
-          <blockquote>«Через полгода впервые увидел пресс. Программа и план питания делают всё».</blockquote>
-          <figcaption>Ромка, 27 лет</figcaption>
-        </figure>
-        <figure class="review">
-          <blockquote>«Готовили к первым соревнованиям по бодибилдингу. Разложили всё по полочкам».</blockquote>
-          <figcaption>Димка, 24 года</figcaption>
-        </figure>
-      </div>
-    </section>
+    <div class="compare-caption">
+      <blockquote class="review-text" id="compare-quote"></blockquote>
+      <cite class="review-author" id="compare-author"></cite>
+    </div>
+  </div>
+</div>
+
+</section>
 
     <!-- ===== Форма записи ===== -->
     <section id="contacts" class="section">
@@ -318,11 +364,6 @@
           <h3>Оставить заявку</h3>
           <input type="text" name="name" placeholder="Ваше имя" required>
           <input type="tel" name="phone" placeholder="Телефон или Telegram" required>
-          <select name="goal">
-            <option value="fatloss">Похудение</option>
-            <option value="mass">Набор массы</option>
-            <option value="tone">Тонус и здоровье</option>
-          </select>
           <button type="submit" class="btn">Отправить заявку</button>
           <p class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
         </form>
@@ -330,11 +371,13 @@
     </section>
 
     <div class="footer-zone"></div>
-    <footer>© 2026 MASUTA · Персональный фитнес-тренер Дмитрий</footer>
+    <footer>© 2026 Саяхов по заказу: MASUTA · Персональный фитнес-тренер Дмитрий</footer>
 
   </div>
 
   <script type="module" src="scripts/main.js"></script>
+  <script type="module" src="scripts/bg_flowers.js"></script>
+    <script type="module" src="scripts/fromtoscript.js"></script>
   <script>
     function submitLead(e) {
       e.preventDefault();
@@ -345,6 +388,7 @@
       return false;
     }
   </script>
+  
 
 </body>
 </html>
