@@ -2360,3 +2360,520 @@ body.modal-open {
   .btn-secondary { width: 100%; text-align: center; margin-bottom: 8px; }
   .consult-links { flex-direction: column; }
 }
+
+/* ============================================================
+   ЗАЩИТА ОТ ПЕРЕКРЫТИЯ КЛИКОВ (главная причина «не кликается»)
+   ============================================================ */
+#sakura-layer,
+#bg-layer,
+.page-vignette,
+.hero-bg,
+.bg-image {
+  pointer-events: none !important;
+}
+
+/* Секции и контент — всегда над фоном и ловят клики */
+.content,
+.section,
+.consult-section {
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================
+   БЛОК «БЕСПЛАТНАЯ КОНСУЛЬТАЦИЯ» — прежний дизайн
+   ============================================================ */
+.consult-section {
+  padding: 60px 20px;
+}
+
+.consult-card {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: center;
+
+  background: rgba(18, 24, 20, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(52, 208, 124, 0.35);
+  border-radius: 24px;
+  padding: clamp(28px, 5vw, 48px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45), 0 0 40px rgba(52, 208, 124, 0.08);
+}
+
+/* Левая колонка */
+.consult-title {
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(24px, 3.5vw, 34px);
+  font-weight: 900;
+  line-height: 1.15;
+  color: #fff;
+  margin: 0 0 14px;
+}
+
+.consult-text {
+  font-size: clamp(14px, 1.4vw, 16px);
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.55;
+  margin: 0 0 24px;
+  max-width: 420px;
+}
+
+.consult-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.contact-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(52, 208, 124, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Правая колонка: форма */
+.lead-form {
+  background: rgba(10, 15, 12, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+  padding: clamp(20px, 3vw, 28px);
+}
+
+.lead-form h3 {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 18px;
+}
+
+.lead-form input {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  background: rgba(6, 10, 8, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 15px;
+  box-sizing: border-box;
+  position: relative;      /* поле не должно «проваливаться» под фон */
+  z-index: 3;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.lead-form input::placeholder { color: rgba(255, 255, 255, 0.4); }
+
+.lead-form input:focus {
+  outline: none;
+  border-color: var(--accent, #34d07c);
+  box-shadow: 0 0 0 3px rgba(52, 208, 124, 0.15);
+}
+
+.lead-form .btn-primary {
+  width: 100%;
+  padding: 16px;
+  font-family: 'Unbounded', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 12px;
+  background: var(--accent, #34d07c);
+  color: #060a08;
+  cursor: pointer;
+  position: relative;
+  z-index: 3;
+  transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+}
+
+.lead-form .btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(52, 208, 124, 0.4);
+}
+
+.lead-form .btn-primary:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.form-note {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  margin: 12px 0 0;
+}
+
+/* ============================================================
+   ЭКРАН УСПЕХА (внутри карточки вместо формы)
+   ============================================================ */
+.lead-success {
+  background: rgba(10, 15, 12, 0.6);
+  border: 1px solid rgba(52, 208, 124, 0.35);
+  border-radius: 18px;
+  padding: clamp(20px, 3vw, 28px);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(14px) scale(0.97);
+  transition: opacity .4s ease, transform .4s cubic-bezier(.25, 1, .5, 1);
+}
+
+.lead-success.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.success-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 14px;
+  font-size: 30px;
+  font-weight: 900;
+  color: #060a08;
+  background: var(--accent, #34d07c);
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(52, 208, 124, 0.5);
+  animation: success-pop .5s cubic-bezier(.25, 1, .5, 1) .1s backwards;
+}
+
+@keyframes success-pop {
+  from { transform: scale(0.4); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.success-title {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff;
+  margin: 0 0 10px;
+}
+
+.success-text {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+
+.success-redirect {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent, #34d07c);
+  margin: 0 0 18px;
+}
+
+.success-go {
+  width: 100%;
+  display: block;
+  padding: 16px;
+  margin-bottom: 10px;
+  font-family: 'Unbounded', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 12px;
+  background: var(--accent, #34d07c);
+  color: #060a08;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  position: relative;
+  z-index: 3;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.success-go:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(52, 208, 124, 0.4);
+}
+
+.success-stay {
+  background: none;
+  border: none;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color .2s ease;
+}
+
+.success-stay:hover { color: rgba(255, 255, 255, 0.8); }
+
+/* ============================================================
+   АДАПТИВ
+   ============================================================ */
+@media (max-width: 860px) {
+  .consult-card { grid-template-columns: 1fr; }
+
+  .consult-text { max-width: none; }
+
+  .consult-links .contact-btn { flex: 1 1 auto; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .consult-section { padding: 40px 14px; }
+  .consult-card { border-radius: 18px; }
+  .contact-btn { width: 100%; }
+}
+.consult-form-zone {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lead-success {
+  background: rgba(10, 15, 12, 0.6);
+  border: 1px solid rgba(52, 208, 124, 0.35);
+  border-radius: 18px;
+  padding: clamp(20px, 3vw, 28px);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(14px) scale(0.97);
+  transition: opacity .4s ease, transform .4s cubic-bezier(.25, 1, .5, 1);
+}
+
+.lead-success.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ---------- Модалка ---------- */
+  .lead-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(12px, 4vw, 40px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s ease, visibility .3s ease;
+  }
+  .lead-modal.open {
+    opacity: 1;
+    visibility: visible;
+  }
+  .lead-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(4, 8, 6, 0.88);
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+  }
+  .lead-dialog {
+    position: relative;
+    width: min(480px, 100%);
+    max-height: 92vh;
+    overflow-y: auto;
+    background: rgba(15, 21, 17, 0.97);
+    border: 1px solid rgba(52, 208, 124, 0.35);
+    border-radius: 24px;
+    padding: clamp(24px, 4vw, 36px);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 40px rgba(52, 208, 124, 0.15);
+    transform: translateY(16px) scale(.97);
+    transition: transform .3s cubic-bezier(.25, 1, .5, 1);
+  }
+  .lead-modal.open .lead-dialog {
+    transform: translateY(0) scale(1);
+  }
+
+  /* ---------- Крестик ---------- */
+  .lead-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background: rgba(6, 19, 11, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    font-size: 14px;
+    cursor: pointer;
+    transition: border-color .2s ease, color .2s ease;
+  }
+  .lead-close:hover {
+    border-color: #34d07c;
+    color: #34d07c;
+  }
+
+  /* ---------- Заголовки ---------- */
+  .lead-modal-title {
+    font-family: 'Unbounded', 'Manrope', sans-serif;
+    font-size: clamp(18px, 3vw, 24px);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.25;
+    color: #fff;
+    margin: 0 0 10px;
+    padding-right: 40px;
+  }
+  .lead-modal-sub {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
+    margin: 0 0 24px;
+  }
+
+  /* ---------- Форма ---------- */
+  .lead-form input {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    background: rgba(6, 10, 8, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 15px;
+    box-sizing: border-box;
+    transition: border-color .2s ease, box-shadow .2s ease;
+  }
+  .lead-form input::placeholder { color: rgba(255, 255, 255, 0.4); }
+  .lead-form input:focus {
+    outline: none;
+    border-color: #34d07c;
+    box-shadow: 0 0 0 3px rgba(52, 208, 124, 0.15);
+  }
+  .lead-form .btn-primary {
+    width: 100%;
+    padding: 16px;
+    font-family: 'Unbounded', 'Manrope', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 12px;
+    background: #34d07c;
+    color: #060a08;
+    cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+  }
+  .lead-form .btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(52, 208, 124, 0.45);
+  }
+  .lead-form .btn-primary:disabled {
+    opacity: 0.6;
+    cursor: wait;
+  }
+  .form-note {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.4);
+    text-align: center;
+    margin: 12px 0 0;
+  }
+
+  /* ---------- Экран успеха ---------- */
+  .lead-success { text-align: center; }
+  .lead-success .success-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    margin-bottom: 14px;
+    font-size: 30px;
+    font-weight: 900;
+    color: #060a08;
+    background: #34d07c;
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(52, 208, 124, 0.5);
+    animation: success-pop .5s cubic-bezier(.25, 1, .5, 1) .1s backwards;
+  }
+  @keyframes success-pop {
+    from { transform: scale(0.4); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+  }
+  .lead-success .success-title {
+    font-family: 'Unbounded', 'Manrope', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    margin: 0 0 10px;
+  }
+  .lead-success .success-text {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+    margin: 0 0 12px;
+  }
+  .lead-success .success-redirect {
+    font-size: 14px;
+    font-weight: 700;
+    color: #34d07c;
+    margin: 0 0 18px;
+  }
+  .lead-success .success-go {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    padding: 16px;
+    margin-bottom: 10px;
+    font-family: 'Unbounded', 'Manrope', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 12px;
+    background: #34d07c;
+    color: #060a08;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .lead-success .success-go:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(52, 208, 124, 0.4);
+  }
+  .lead-success .success-stay {
+    background: none;
+    border: none;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color .2s ease;
+  }
+  .lead-success .success-stay:hover { color: rgba(255, 255, 255, 0.85); }
+
+  body.modal-open { overflow: hidden; }

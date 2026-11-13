@@ -338,29 +338,45 @@
 
 </section>
 
-    <!-- ===== Форма записи ===== -->
-    <section id="contacts" class="section">
-      <div class="cta-card">
-        <div class="cta-left">
-          <h2 class="cta-title">Запишись на бесплатную консультацию</h2>
-          <p class="cta-text">Обсудим цель, замерим стартовые показатели и наметим план. Без обязательств.</p>
+<!-- ===== Блок консультации ===== -->
+<section id="contacts" class="section consult-section">
+  <div class="consult-card">
+    <div class="consult-left">
+      <h2 class="consult-title">Запишись на бесплатную консультацию</h2>
+      <p class="consult-text">Обсудим цель, замерим стартовые показатели и наметим план. Без обязательств.</p>
 
-          <div class="contacts">
-            <a class="contact-btn" href="https://t.me/username" target="_blank" rel="noopener">Telegram</a>
-            <a class="contact-btn" href="https://wa.me/79990000000" target="_blank" rel="noopener">WhatsApp</a>
-            <a class="contact-btn" href="mailto:fitpro@mail.ru">Email</a>
-          </div>
-        </div>
-
-        <form class="lead-form" onsubmit="return submitLead(event)">
-          <h3>Оставить заявку</h3>
-          <input type="text" name="name" placeholder="Ваше имя" required>
-          <input type="tel" name="phone" placeholder="Телефон или Telegram" required>
-          <button type="submit" class="btn-primary">Отправить заявку</button>
-          <p class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
-        </form>
+      <div class="consult-links">
+        <a class="contact-btn" href="https://t.me/username" target="_blank" rel="noopener">Telegram</a>
+        <a class="contact-btn" href="https://wa.me/79990000000" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="contact-btn" href="mailto:fitpro@mail.ru">Email</a>
       </div>
-    </section>
+    </div>
+
+    <div class="consult-form-zone">
+      <form class="lead-form" id="lead-form" novalidate>
+        <h3>Оставить заявку</h3>
+        <input type="text" name="name" placeholder="Ваше имя" required>
+        <input type="tel" name="phone" placeholder="Телефон или Telegram" required>
+        <button type="submit" class="btn-primary">Отправить заявку</button>
+        <p class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
+      </form>
+
+      <!-- Успех появляется рядом, форма не исчезает -->
+      <div class="lead-success" id="lead-success" hidden>
+        <span class="success-icon" aria-hidden="true">✓</span>
+        <h3 class="success-title">Заявка принята!</h3>
+        <p class="success-text">
+          Отличный первый шаг. Заполните короткую анкету — это займёт 2 минуты.
+        </p>
+        <p class="success-redirect">
+          Сейчас переведу вас на анкету через <span id="redirect-timer">4</span> сек…
+        </p>
+        <a href="anketa.html" class="success-go">Перейти к анкете сейчас</a>
+        <button type="button" class="success-stay" id="success-stay">Остаться на странице</button>
+      </div>
+    </div>
+  </div>
+</section>
 
     <div class="footer-zone"></div>
     <footer>© 2026 Саяхов по заказу: MASUTA · Персональный фитнес-тренер Дмитрий</footer>
@@ -369,17 +385,10 @@
 
   <script type="module" src="scripts/main.js"></script>
   <script type="module" src="scripts/bg_flowers.js"></script>
-    <script type="module" src="scripts/fromtoscript.js"></script>
-  <script>
-    function submitLead(e) {
-      e.preventDefault();
-      const form = e.target;
-      const name = form.name.value.trim();
-      alert('Спасибо, ' + (name || 'друг') + '! Заявка принята — свяжусь в течение дня.');
-      form.reset();
-      return false;
-    }
-  </script>
+  <script type="module" src="scripts/fromtoscript.js"></script>
+  <script type="module" src="scripts/modalka.js"></script>
+
+
  
   <!-- ===== МОДАЛЬНОЕ ОКНО: ФОРМА ЗАЯВКИ ===== -->
 <div class="consult-modal" id="consult-modal" aria-hidden="true">
